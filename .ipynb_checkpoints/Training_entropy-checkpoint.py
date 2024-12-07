@@ -9,9 +9,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.data import InMemoryDataset, Data, DataLoader
 from torch_geometric.nn import (
-    NNConv,
+    TransformerConv,  # Use TransformerConv instead of NNConv
     BatchNorm,
-    global_mean_pool,
     GlobalAttention
 )
 from torch.utils.data import random_split
@@ -24,14 +23,14 @@ CONFIG = {
     'processed_dir': './processed/processed',
     'processed_file': 'processed/processed/data.pt',
     'scalers_path': 'scalers.pkl',
-    'batch_size': 256,
+    'batch_size': 1024,
     'learning_rate': 5e-5,
     'weight_decay': 5e-3,
-    'hidden_channels': 256,
+    'hidden_channels': 512,
     'num_epochs': 200,
     'patience': 20,
     'random_seed': 42,
-    'best_model_path': 'best_gnn_model2.pth',
+    'best_model_path': 'best_gnn_model.pth',
     'loss_alpha': 1.0,
     'dropout_p': 0.3,
     'heads': 6,
@@ -75,50 +74,49 @@ class SpinSystemDataset(InMemoryDataset):
         pass
 
 class ImprovedGNNModel(nn.Module):
-    def __init__(self, num_node_features, edge_attr_dim, hidden_channels, dropout_p=0.5):
+    def __init__(self, num_node_features, edge_attr_dim, hidden_channels, dropout_p=0.3, heads=6):
         super(ImprovedGNNModel, self).__init__()
         torch.manual_seed(CONFIG['random_seed'])
 
-        # First NNConv layer
-        nn_edge1 = nn.Sequential(
-            nn.Linear(edge_attr_dim, hidden_channels),
-            nn.ReLU(),
-            nn.Linear(hidden_channels, num_node_features * hidden_channels)
+        # Using TransformerConv layers with multiple heads
+        self.conv1 = TransformerConv(
+            in_channels=num_node_features,
+            out_channels=hidden_channels,
+            heads=heads,
+            edge_dim=edge_attr_dim,
+            dropout=dropout_p
         )
-        self.conv1 = NNConv(num_node_features, hidden_channels, nn_edge1, aggr='mean')
-        self.bn1 = BatchNorm(hidden_channels)
+        self.bn1 = BatchNorm(hidden_channels * heads)
 
-        # Second NNConv layer
-        nn_edge2 = nn.Sequential(
-            nn.Linear(edge_attr_dim, hidden_channels),
-            nn.ReLU(),
-            nn.Linear(hidden_channels, hidden_channels * hidden_channels)
+        self.conv2 = TransformerConv(
+            in_channels=hidden_channels * heads,
+            out_channels=hidden_channels,
+            heads=heads,
+            edge_dim=edge_attr_dim,
+            dropout=dropout_p
         )
-        self.conv2 = NNConv(hidden_channels, hidden_channels, nn_edge2, aggr='mean')
-        self.bn2 = BatchNorm(hidden_channels)
+        self.bn2 = BatchNorm(hidden_channels * heads)
 
-        # Third NNConv layer
-        nn_edge3 = nn.Sequential(
-            nn.Linear(edge_attr_dim, hidden_channels),
-            nn.ReLU(),
-            nn.Linear(hidden_channels, hidden_channels * hidden_channels)
+        self.conv3 = TransformerConv(
+            in_channels=hidden_channels * heads,
+            out_channels=hidden_channels,
+            heads=heads,
+            edge_dim=edge_attr_dim,
+            dropout=dropout_p
         )
-        self.conv3 = NNConv(hidden_channels, hidden_channels, nn_edge3, aggr='mean')
-        self.bn3 = BatchNorm(hidden_channels)
+        self.bn3 = BatchNorm(hidden_channels * heads)
 
         self.dropout = nn.Dropout(p=dropout_p)
 
-        # Attention Pooling
         gate_nn = nn.Sequential(
-            nn.Linear(hidden_channels, hidden_channels // 2),
+            nn.Linear(hidden_channels * heads, hidden_channels),
             nn.ReLU(),
-            nn.Linear(hidden_channels // 2, 1)
+            nn.Linear(hidden_channels, 1)
         )
         self.global_pool = GlobalAttention(gate_nn=gate_nn)
 
-        # Fully connected part
         self.fc = nn.Sequential(
-            nn.Linear(hidden_channels, hidden_channels * 2),
+            nn.Linear(hidden_channels * heads, hidden_channels * 2),
             BatchNorm(hidden_channels * 2),
             nn.ReLU(),
             nn.Dropout(p=dropout_p),
@@ -132,29 +130,23 @@ class ImprovedGNNModel(nn.Module):
         )
 
     def forward(self, x, edge_index, edge_attr, batch):
-        # Layer 1
-        x1 = self.conv1(x, edge_index, edge_attr)
-        x1 = self.bn1(x1)
-        x1 = F.relu(x1)
+        x = self.conv1(x, edge_index, edge_attr)
+        x = self.bn1(x)
+        x = F.relu(x)
 
-        # Layer 2
-        x2 = self.conv2(x1, edge_index, edge_attr)
+        x2 = self.conv2(x, edge_index, edge_attr)
         x2 = self.bn2(x2)
         x2 = F.relu(x2)
-        x2 = x2 + x1  # Residual connection
+        x = x + x2  # Residual
 
-        # Layer 3
-        x3 = self.conv3(x2, edge_index, edge_attr)
+        x3 = self.conv3(x, edge_index, edge_attr)
         x3 = self.bn3(x3)
         x3 = F.relu(x3)
-        x3 = x3 + x2  # Residual connection
+        x = x + x3  # Residual
 
-        x3 = self.dropout(x3)
+        x = self.dropout(x)
 
-        # Global pooling
-        x_pooled = self.global_pool(x3, batch)
-
-        # Fully connected layers
+        x_pooled = self.global_pool(x, batch)
         out = self.fc(x_pooled)
         return out.squeeze()
 
@@ -169,7 +161,8 @@ def initialize_model(dataset, config):
         num_node_features=num_node_features,
         edge_attr_dim=edge_attr_dim,
         hidden_channels=hidden_channels,
-        dropout_p=config['dropout_p']
+        dropout_p=config['dropout_p'],
+        heads=config['heads']
     ).to(device)
     logging.info("\nModel Architecture:")
     logging.info(model)
@@ -192,6 +185,7 @@ def train_epoch(model, optimizer, criterion, loader):
         data = data.to(device)
         optimizer.zero_grad()
         out = model(data.x, data.edge_index, data.edge_attr, data.batch)
+        # out and data.y are log(entropy_per_Nx)
         loss = criterion(out, data.y.squeeze())
         loss.backward()
         optimizer.step()
@@ -208,31 +202,27 @@ def evaluate(model, criterion, loader):
     with torch.no_grad():
         for data in loader:
             data = data.to(device)
-            # Predictions are in log-scale
             log_pred = model(data.x, data.edge_index, data.edge_attr, data.batch)
-            loss = criterion(log_pred, data.y.squeeze())  # data.y is also log-scale
+            loss = criterion(log_pred, data.y.squeeze())
             total_loss += loss.item() * data.num_graphs
 
-            # Convert back to original scale
-            y_true = torch.exp(data.y.squeeze())
-            y_pred = torch.exp(log_pred)
+            Nx = data.Nx
+            y_true = torch.exp(data.y.squeeze()) * Nx
+            y_pred = torch.exp(log_pred) * Nx
 
-            # Calculate MAE on original scale
-            total_mae += F.l1_loss(y_pred, y_true, reduction='sum').item()
+            mae_val = F.l1_loss(y_pred, y_true, reduction='sum').item()
+            total_mae += mae_val
 
-            # MAPE calculation
             nonzero_mask = (y_true != 0)
             if nonzero_mask.sum() > 0:
-                percentage_errors = (torch.abs((y_true[nonzero_mask] - y_pred[nonzero_mask]) / y_true[nonzero_mask])) * 100
+                percentage_errors = torch.abs((y_true[nonzero_mask] - y_pred[nonzero_mask]) / y_true[nonzero_mask]) * 100
                 total_percentage_error += percentage_errors.sum().item()
                 count += nonzero_mask.sum().item()
 
     avg_loss = total_loss / len(loader.dataset)
     avg_mae = total_mae / len(loader.dataset)
     avg_percentage_error = total_percentage_error / count if count > 0 else float('nan')
-
     return avg_loss, avg_mae, avg_percentage_error
-
 
 def get_predictions(model, loader):
     model.eval()
@@ -241,9 +231,14 @@ def get_predictions(model, loader):
     with torch.no_grad():
         for data in loader:
             data = data.to(device)
-            out = model(data.x, data.edge_index, data.edge_attr, data.batch)
-            preds.append(out.cpu().numpy())
-            ys.append(data.y.cpu().numpy())
+            log_out = model(data.x, data.edge_index, data.edge_attr, data.batch)
+            Nx = data.Nx
+            pred_entropy = torch.exp(log_out) * Nx
+            true_entropy = torch.exp(data.y.squeeze()) * Nx
+
+            preds.append(pred_entropy.cpu().numpy())
+            ys.append(true_entropy.cpu().numpy())
+
     return np.concatenate(preds), np.concatenate(ys)
 
 def train_model(model, criterion, optimizer, scheduler, train_loader, val_loader, config):
@@ -256,7 +251,7 @@ def train_model(model, criterion, optimizer, scheduler, train_loader, val_loader
     for epoch in range(1, config['num_epochs'] + 1):
         epoch_start_time = time.time()
         train_loss = train_epoch(model, optimizer, criterion, train_loader)
-        val_loss, val_mae, val_percentage_error  = evaluate(model, criterion, val_loader)
+        val_loss, val_mae, val_percentage_error = evaluate(model, criterion, val_loader)
         scheduler.step()
 
         epoch_duration = time.time() - epoch_start_time
@@ -264,10 +259,10 @@ def train_model(model, criterion, optimizer, scheduler, train_loader, val_loader
 
         logging.info(
             f'Epoch [{epoch}/{config["num_epochs"]}] | '
-            f'Train Loss: {train_loss:.6f} | '
-            f'Val Loss: {val_loss:.6f} | '
-            f'Val MAE: {val_mae:.6f} | '
-            f'PE Error: {val_percentage_error:.6f} | '
+            f'Train Loss (log): {train_loss:.6f} | '
+            f'Val Loss (log): {val_loss:.6f} | '
+            f'Val MAE (original): {val_mae:.6f} | '
+            f'Val MAPE (original): {val_percentage_error:.6f} | '
             f'LR: {current_lr:.6f} | '
             f'Epoch Time: {epoch_duration:.2f} sec'
         )
@@ -287,18 +282,19 @@ def train_model(model, criterion, optimizer, scheduler, train_loader, val_loader
 
 def test_model(model, criterion, test_loader, config):
     model.load_state_dict(torch.load(config['best_model_path']))
-    test_loss, test_mae = evaluate(model, criterion, test_loader)
-    logging.info(f'\nTest Loss (Smooth L1 Loss): {test_loss:.6f}')
-    logging.info(f'Test MAE: {test_mae:.6f}')
+    test_loss, test_mae, test_pe = evaluate(model, criterion, test_loader)
+    logging.info(f'\nTest Loss (log-scale): {test_loss:.6f}')
+    logging.info(f'Test MAE (original scale): {test_mae:.6f}')
+    logging.info(f'Test MAPE (original scale): {test_pe:.6f}')
 
     test_preds, test_ys = get_predictions(model, test_loader)
     mse = mean_squared_error(test_ys, test_preds)
     mae = mean_absolute_error(test_ys, test_preds)
     r2 = r2_score(test_ys, test_preds)
 
-    logging.info(f'\nTest MSE: {mse:.6f}')
-    logging.info(f'Test MAE: {mae:.6f}')
-    logging.info(f'Test R2: {r2:.6f}')
+    logging.info(f'\nTest MSE (original): {mse:.6f}')
+    logging.info(f'Test MAE (original): {mae:.6f}')
+    logging.info(f'Test R2 (original): {r2:.6f}')
 
     plt.figure(figsize=(8, 6))
     sns.scatterplot(x=test_ys, y=test_preds, alpha=0.5)
