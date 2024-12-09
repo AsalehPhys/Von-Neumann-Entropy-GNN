@@ -9,9 +9,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.data import InMemoryDataset, Data, DataLoader
 from torch_geometric.nn import (
-    TransformerConv,  # Use TransformerConv instead of NNConv
-    BatchNorm,
-    GlobalAttention
+    GINEConv,
+    Set2Set,
+    GraphNorm
 )
 from torch.utils.data import random_split
 from torch.optim.lr_scheduler import CosineAnnealingLR
@@ -22,18 +22,15 @@ import seaborn as sns
 CONFIG = {
     'processed_dir': './processed/processed',
     'processed_file': 'processed/processed/data.pt',
-    'scalers_path': 'scalers.pkl',
     'batch_size': 1024,
     'learning_rate': 5e-5,
-    'weight_decay': 5e-3,
-    'hidden_channels': 512,
-    'num_epochs': 200,
-    'patience': 20,
+    'weight_decay': 1e-3,  
+    'hidden_channels': 1024,
+    'num_epochs': 300,
+    'patience': 30,
     'random_seed': 42,
-    'best_model_path': 'best_gnn_model.pth',
-    'loss_alpha': 1.0,
-    'dropout_p': 0.3,
-    'heads': 6,
+    'best_model_path': 'best_gnn_model_improved.pth',
+    'dropout_p': 0.6
 }
 
 def setup_logging():
@@ -74,80 +71,79 @@ class SpinSystemDataset(InMemoryDataset):
         pass
 
 class ImprovedGNNModel(nn.Module):
-    def __init__(self, num_node_features, edge_attr_dim, hidden_channels, dropout_p=0.3, heads=6):
+    def __init__(self, num_node_features, edge_attr_dim, hidden_channels, dropout_p=0.5, global_feature_dim=9):
         super(ImprovedGNNModel, self).__init__()
-        torch.manual_seed(CONFIG['random_seed'])
 
-        # Using TransformerConv layers with multiple heads
-        self.conv1 = TransformerConv(
-            in_channels=num_node_features,
-            out_channels=hidden_channels,
-            heads=heads,
-            edge_dim=edge_attr_dim,
-            dropout=dropout_p
-        )
-        self.bn1 = BatchNorm(hidden_channels * heads)
+        # MLP for GINEConv
+        def mlp(in_channels, out_channels):
+            return nn.Sequential(
+                nn.Linear(in_channels, hidden_channels),
+                nn.ReLU(),
+                nn.Linear(hidden_channels, out_channels)
+            )
 
-        self.conv2 = TransformerConv(
-            in_channels=hidden_channels * heads,
-            out_channels=hidden_channels,
-            heads=heads,
-            edge_dim=edge_attr_dim,
-            dropout=dropout_p
-        )
-        self.bn2 = BatchNorm(hidden_channels * heads)
+        # GINEConv layers with edge_dim specified
+        self.conv1 = GINEConv(mlp(num_node_features, hidden_channels), edge_dim=edge_attr_dim)
+        self.norm1 = GraphNorm(hidden_channels)
 
-        self.conv3 = TransformerConv(
-            in_channels=hidden_channels * heads,
-            out_channels=hidden_channels,
-            heads=heads,
-            edge_dim=edge_attr_dim,
-            dropout=dropout_p
-        )
-        self.bn3 = BatchNorm(hidden_channels * heads)
+        self.conv2 = GINEConv(mlp(hidden_channels, hidden_channels), edge_dim=edge_attr_dim)
+        self.norm2 = GraphNorm(hidden_channels)
+
+        self.conv3 = GINEConv(mlp(hidden_channels, hidden_channels), edge_dim=edge_attr_dim)
+        self.norm3 = GraphNorm(hidden_channels)
 
         self.dropout = nn.Dropout(p=dropout_p)
 
-        gate_nn = nn.Sequential(
-            nn.Linear(hidden_channels * heads, hidden_channels),
-            nn.ReLU(),
-            nn.Linear(hidden_channels, 1)
-        )
-        self.global_pool = GlobalAttention(gate_nn=gate_nn)
+        # Set2Set for global readout
+        self.readout = Set2Set(hidden_channels, processing_steps=3, num_layers=2)
 
+        # Incorporate global features by increasing input dimension of the first fc layer
+        input_dim = 2 * hidden_channels + global_feature_dim
         self.fc = nn.Sequential(
-            nn.Linear(hidden_channels * heads, hidden_channels * 2),
-            BatchNorm(hidden_channels * 2),
+            nn.Linear(input_dim, 2 * hidden_channels),
+            GraphNorm(2 * hidden_channels),
             nn.ReLU(),
             nn.Dropout(p=dropout_p),
 
-            nn.Linear(hidden_channels * 2, hidden_channels),
-            BatchNorm(hidden_channels),
+            nn.Linear(2 * hidden_channels, hidden_channels),
+            GraphNorm(hidden_channels),
             nn.ReLU(),
             nn.Dropout(p=dropout_p),
 
             nn.Linear(hidden_channels, 1)
         )
 
-    def forward(self, x, edge_index, edge_attr, batch):
-        x = self.conv1(x, edge_index, edge_attr)
-        x = self.bn1(x)
-        x = F.relu(x)
+    def forward(self, x, edge_index, edge_attr, batch, global_features):
+        # Layer 1
+        h = self.conv1(x, edge_index, edge_attr)
+        h = self.norm1(h, batch)
+        h = F.relu(h)
+        h1 = h
 
-        x2 = self.conv2(x, edge_index, edge_attr)
-        x2 = self.bn2(x2)
-        x2 = F.relu(x2)
-        x = x + x2  # Residual
+        # Layer 2
+        h = self.conv2(h, edge_index, edge_attr)
+        h = self.norm2(h, batch)
+        h = F.relu(h)
+        h = h + h1  # Residual
+        h2 = h
 
-        x3 = self.conv3(x, edge_index, edge_attr)
-        x3 = self.bn3(x3)
-        x3 = F.relu(x3)
-        x = x + x3  # Residual
+        # Layer 3
+        h = self.conv3(h, edge_index, edge_attr)
+        h = self.norm3(h, batch)
+        h = F.relu(h)
+        h = h + h2  # Residual
 
-        x = self.dropout(x)
+        h = self.dropout(h)
 
-        x_pooled = self.global_pool(x, batch)
-        out = self.fc(x_pooled)
+        # Global readout
+        h = self.readout(h, batch)  # [num_graphs, 2*hidden_channels]
+
+        # Concatenate global features
+        # global_features should be [num_graphs, global_feature_dim]
+        h = torch.cat([h, global_features], dim=-1)
+
+        # Fully connected MLP
+        out = self.fc(h)
         return out.squeeze()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -157,12 +153,16 @@ def initialize_model(dataset, config):
     num_node_features = dataset[0].num_node_features
     edge_attr_dim = dataset[0].edge_attr.shape[1]
     hidden_channels = config['hidden_channels']
+
+    # global_feature_dim is fixed at 9 (as defined in previous dataset code)
+    global_feature_dim = dataset[0].global_features.shape[1]
+
     model = ImprovedGNNModel(
         num_node_features=num_node_features,
         edge_attr_dim=edge_attr_dim,
         hidden_channels=hidden_channels,
         dropout_p=config['dropout_p'],
-        heads=config['heads']
+        global_feature_dim=global_feature_dim
     ).to(device)
     logging.info("\nModel Architecture:")
     logging.info(model)
@@ -178,16 +178,17 @@ def setup_training(model, config):
     scheduler = CosineAnnealingLR(optimizer, T_max=config['num_epochs'])
     return criterion, optimizer, scheduler
 
-def train_epoch(model, optimizer, criterion, loader):
+def train_epoch(model, optimizer, criterion, loader, clip=2.0):
     model.train()
     total_loss = 0
     for data in loader:
         data = data.to(device)
-        optimizer.zero_grad()
-        out = model(data.x, data.edge_index, data.edge_attr, data.batch)
-        # out and data.y are log(entropy_per_Nx)
+        out = model(data.x, data.edge_index, data.edge_attr, data.batch, data.global_features)
         loss = criterion(out, data.y.squeeze())
+        optimizer.zero_grad()
         loss.backward()
+        if clip is not None:
+            torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
         optimizer.step()
         total_loss += loss.item() * data.num_graphs
     return total_loss / len(loader.dataset)
@@ -202,26 +203,26 @@ def evaluate(model, criterion, loader):
     with torch.no_grad():
         for data in loader:
             data = data.to(device)
-            log_pred = model(data.x, data.edge_index, data.edge_attr, data.batch)
-            loss = criterion(log_pred, data.y.squeeze())
+            pred = model(data.x, data.edge_index, data.edge_attr, data.batch, data.global_features)
+            loss = criterion(pred, data.y.squeeze())
             total_loss += loss.item() * data.num_graphs
 
-            Nx = data.Nx
-            y_true = torch.exp(data.y.squeeze()) * Nx
-            y_pred = torch.exp(log_pred) * Nx
+            y_true = data.y.squeeze()
+            y_pred = pred
 
-            mae_val = F.l1_loss(y_pred, y_true, reduction='sum').item()
-            total_mae += mae_val
+            total_mae += F.l1_loss(y_pred, y_true, reduction='sum').item()
 
+            # MAPE
             nonzero_mask = (y_true != 0)
             if nonzero_mask.sum() > 0:
-                percentage_errors = torch.abs((y_true[nonzero_mask] - y_pred[nonzero_mask]) / y_true[nonzero_mask]) * 100
+                percentage_errors = (torch.abs((y_true[nonzero_mask] - y_pred[nonzero_mask]) / y_true[nonzero_mask])) * 100
                 total_percentage_error += percentage_errors.sum().item()
                 count += nonzero_mask.sum().item()
 
     avg_loss = total_loss / len(loader.dataset)
     avg_mae = total_mae / len(loader.dataset)
     avg_percentage_error = total_percentage_error / count if count > 0 else float('nan')
+
     return avg_loss, avg_mae, avg_percentage_error
 
 def get_predictions(model, loader):
@@ -231,14 +232,9 @@ def get_predictions(model, loader):
     with torch.no_grad():
         for data in loader:
             data = data.to(device)
-            log_out = model(data.x, data.edge_index, data.edge_attr, data.batch)
-            Nx = data.Nx
-            pred_entropy = torch.exp(log_out) * Nx
-            true_entropy = torch.exp(data.y.squeeze()) * Nx
-
-            preds.append(pred_entropy.cpu().numpy())
-            ys.append(true_entropy.cpu().numpy())
-
+            out = model(data.x, data.edge_index, data.edge_attr, data.batch, data.global_features)
+            preds.append(out.cpu().numpy())
+            ys.append(data.y.cpu().numpy())
     return np.concatenate(preds), np.concatenate(ys)
 
 def train_model(model, criterion, optimizer, scheduler, train_loader, val_loader, config):
@@ -259,10 +255,10 @@ def train_model(model, criterion, optimizer, scheduler, train_loader, val_loader
 
         logging.info(
             f'Epoch [{epoch}/{config["num_epochs"]}] | '
-            f'Train Loss (log): {train_loss:.6f} | '
-            f'Val Loss (log): {val_loss:.6f} | '
-            f'Val MAE (original): {val_mae:.6f} | '
-            f'Val MAPE (original): {val_percentage_error:.6f} | '
+            f'Train Loss: {train_loss:.6f} | '
+            f'Val Loss: {val_loss:.6f} | '
+            f'Val MAE: {val_mae:.6f} | '
+            f'PE Error: {val_percentage_error:.6f} | '
             f'LR: {current_lr:.6f} | '
             f'Epoch Time: {epoch_duration:.2f} sec'
         )
@@ -282,26 +278,26 @@ def train_model(model, criterion, optimizer, scheduler, train_loader, val_loader
 
 def test_model(model, criterion, test_loader, config):
     model.load_state_dict(torch.load(config['best_model_path']))
-    test_loss, test_mae, test_pe = evaluate(model, criterion, test_loader)
-    logging.info(f'\nTest Loss (log-scale): {test_loss:.6f}')
-    logging.info(f'Test MAE (original scale): {test_mae:.6f}')
-    logging.info(f'Test MAPE (original scale): {test_pe:.6f}')
+    test_loss, test_mae, test_perc_error = evaluate(model, criterion, test_loader)
+    logging.info(f'\nTest Loss (Smooth L1 Loss): {test_loss:.6f}')
+    logging.info(f'Test MAE: {test_mae:.6f}')
+    logging.info(f'Test Pct Error: {test_perc_error:.6f}')
 
     test_preds, test_ys = get_predictions(model, test_loader)
     mse = mean_squared_error(test_ys, test_preds)
     mae = mean_absolute_error(test_ys, test_preds)
     r2 = r2_score(test_ys, test_preds)
 
-    logging.info(f'\nTest MSE (original): {mse:.6f}')
-    logging.info(f'Test MAE (original): {mae:.6f}')
-    logging.info(f'Test R2 (original): {r2:.6f}')
+    logging.info(f'\nTest MSE: {mse:.6f}')
+    logging.info(f'Test MAE: {mae:.6f}')
+    logging.info(f'Test R2: {r2:.6f}')
 
     plt.figure(figsize=(8, 6))
     sns.scatterplot(x=test_ys, y=test_preds, alpha=0.5)
     plt.plot([test_ys.min(), test_ys.max()], [test_ys.min(), test_ys.max()], 'r--')
-    plt.xlabel('True von Neumann Entropy')
-    plt.ylabel('Predicted von Neumann Entropy')
-    plt.title('True vs. Predicted von Neumann Entropy')
+    plt.xlabel('True Entropy')
+    plt.ylabel('Predicted Entropy')
+    plt.title('True vs. Predicted Entropy')
     plt.grid(True)
     plt.show()
 
