@@ -22,10 +22,10 @@ import seaborn as sns
 CONFIG = {
     'processed_dir': './processed/processed',
     'processed_file': 'processed/processed/data.pt',
-    'batch_size': 1024,
+    'batch_size': 2048,
     'learning_rate': 5e-5,
     'weight_decay': 1e-3,  
-    'hidden_channels': 1024,
+    'hidden_channels': 512,
     'num_epochs': 300,
     'patience': 30,
     'random_seed': 42,
@@ -70,14 +70,21 @@ class SpinSystemDataset(InMemoryDataset):
     def process(self):
         pass
 
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch_geometric.nn import GINEConv, GraphNorm, Set2Set, GATConv  # Assuming GATConv for attention
+
 class ImprovedGNNModel(nn.Module):
     def __init__(self, num_node_features, edge_attr_dim, hidden_channels, dropout_p=0.5, global_feature_dim=9):
         super(ImprovedGNNModel, self).__init__()
 
-        # MLP for GINEConv
+        # Enhanced MLP for GINEConv with additional layers
         def mlp(in_channels, out_channels):
             return nn.Sequential(
-                nn.Linear(in_channels, hidden_channels),
+                nn.Linear(in_channels, hidden_channels * 2),
+                nn.ReLU(),
+                nn.Linear(hidden_channels * 2, hidden_channels),
                 nn.ReLU(),
                 nn.Linear(hidden_channels, out_channels)
             )
@@ -85,22 +92,37 @@ class ImprovedGNNModel(nn.Module):
         # GINEConv layers with edge_dim specified
         self.conv1 = GINEConv(mlp(num_node_features, hidden_channels), edge_dim=edge_attr_dim)
         self.norm1 = GraphNorm(hidden_channels)
-
+        
         self.conv2 = GINEConv(mlp(hidden_channels, hidden_channels), edge_dim=edge_attr_dim)
         self.norm2 = GraphNorm(hidden_channels)
-
+        
         self.conv3 = GINEConv(mlp(hidden_channels, hidden_channels), edge_dim=edge_attr_dim)
         self.norm3 = GraphNorm(hidden_channels)
+        
+        # Additional convolutional layers for increased depth
+        self.conv4 = GINEConv(mlp(hidden_channels, hidden_channels), edge_dim=edge_attr_dim)
+        self.norm4 = GraphNorm(hidden_channels)
+        
+        self.conv5 = GINEConv(mlp(hidden_channels, hidden_channels), edge_dim=edge_attr_dim)
+        self.norm5 = GraphNorm(hidden_channels)
 
         self.dropout = nn.Dropout(p=dropout_p)
 
-        # Set2Set for global readout
-        self.readout = Set2Set(hidden_channels, processing_steps=3, num_layers=2)
+        # Set2Set for global readout with increased processing steps
+        self.readout = Set2Set(hidden_channels, processing_steps=4, num_layers=3)
 
         # Incorporate global features by increasing input dimension of the first fc layer
+        # Also, adding attention mechanism if desired
         input_dim = 2 * hidden_channels + global_feature_dim
+        self.attention = nn.MultiheadAttention(embed_dim=2 * hidden_channels, num_heads=4, dropout=dropout_p)
+
         self.fc = nn.Sequential(
-            nn.Linear(input_dim, 2 * hidden_channels),
+            nn.Linear(input_dim, 4 * hidden_channels),
+            GraphNorm(4 * hidden_channels),
+            nn.ReLU(),
+            nn.Dropout(p=dropout_p),
+
+            nn.Linear(4 * hidden_channels, 2 * hidden_channels),
             GraphNorm(2 * hidden_channels),
             nn.ReLU(),
             nn.Dropout(p=dropout_p),
@@ -132,11 +154,32 @@ class ImprovedGNNModel(nn.Module):
         h = self.norm3(h, batch)
         h = F.relu(h)
         h = h + h2  # Residual
+        h3 = h
+
+        # Layer 4
+        h = self.conv4(h, edge_index, edge_attr)
+        h = self.norm4(h, batch)
+        h = F.relu(h)
+        h = h + h3  # Residual
+        h4 = h
+
+        # Layer 5
+        h = self.conv5(h, edge_index, edge_attr)
+        h = self.norm5(h, batch)
+        h = F.relu(h)
+        h = h + h4  # Residual
 
         h = self.dropout(h)
 
         # Global readout
         h = self.readout(h, batch)  # [num_graphs, 2*hidden_channels]
+
+        # Attention mechanism (optional)
+        # If you want to apply attention between readout and global features
+        # h = h.unsqueeze(0)  # Shape [1, num_graphs, 2*hidden_channels]
+        # global_features = global_features.unsqueeze(0)  # Shape [1, num_graphs, global_feature_dim]
+        # attn_output, _ = self.attention(h, h, h)
+        # h = attn_output.squeeze(0)
 
         # Concatenate global features
         # global_features should be [num_graphs, global_feature_dim]
@@ -145,6 +188,7 @@ class ImprovedGNNModel(nn.Module):
         # Fully connected MLP
         out = self.fc(h)
         return out.squeeze()
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 logging.info(f'Using device: {device}')
