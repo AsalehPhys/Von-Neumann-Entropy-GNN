@@ -2,14 +2,15 @@
 data_processing.py
 
 Script that:
-1) Reads your raw parquet file with columns like Nx, Delta, Omega, Subsystem_Mask, etc.
-2) Builds a PyTorch Geometric InMemoryDataset with:
+1) Reads two raw parquet files with columns like Nx, Delta, Omega, Subsystem_Mask, etc.
+2) Combines them into one DataFrame.
+3) Builds a PyTorch Geometric InMemoryDataset with:
    - Node features
    - Edge features
    - Graph-level targets (e.g., Von_Neumann_Entropy)
    - Graph-level fields (Omega, Delta, Energy, total_rydberg, system_size, etc.)
    - Subsystem sizes nA = size of partition A, nB = N - nA
-3) Saves the final dataset as data.pt in './processed' (by default).
+4) Saves the final dataset as data.pt in './processed' (by default).
 """
 
 import os
@@ -31,8 +32,11 @@ from sklearn.neighbors import NearestNeighbors
 # Configuration
 # -------------------------------------------------------------------------
 CONFIG = {
-    'data_path': 'spin_system_properties_gpu1-7.parquet',  # Replace with your actual file
-    'processed_dir': './processed2',
+    'data_paths': [
+        'spin_system_properties_gpu1-7.parquet',  # Replace with your actual first file
+        'spin_system_properties_cpu_test.parquet'  # Replace with your actual second file
+    ],
+    'processed_dir': './processed3',
     'processed_file_name': 'data.pt',
     'distance_threshold': 25,   # example threshold for edges
     'random_seed': 42,
@@ -103,9 +107,6 @@ class SpinSystemDataset(InMemoryDataset):
 
             # -------------------------------------------------------------
             # 1) Build Node Features
-            #    This code replicates your original logic that turned
-            #    top_50_indices, top_50_probabilities into node features,
-            #    along with position-based attributes, etc.
             # -------------------------------------------------------------
             x_spacing = row['x_spacing']
             y_spacing = row['y_spacing']
@@ -118,17 +119,7 @@ class SpinSystemDataset(InMemoryDataset):
 
             positions_t = torch.tensor(positions, dtype=torch.float)
 
-            # We replicate your approach of building node features:
-            #   - normalized positions
-            #   - Rydberg probabilities
-            #   - local densities
-            #   - boundary distances
-            #   - angles
-            #   - etc.
-            # For brevity, we do a shorter version, but in your real code,
-            # you'd fully replicate all original features.
-
-            # Some placeholders for demonstration:
+            # Normalized positions
             pos_min = positions_t.min(dim=0).values
             pos_max = positions_t.max(dim=0).values
             normalized_positions = (positions_t - pos_min) / (pos_max - pos_min + 1e-8)
@@ -149,27 +140,25 @@ class SpinSystemDataset(InMemoryDataset):
             mask_tensor = torch.tensor([int(bit) for bit in subsystem_mask_str],
                                        dtype=torch.float).unsqueeze(1)  # [N,1]
 
-            # Example local density or boundary distances, angles, etc.
-            # We'll do placeholders for illustration:
+            # Some placeholder features
             boundary_dist = torch.rand(N, 1)
             angles = torch.rand(N, 1)
             local_interact = torch.rand(N, 1)
             config_entropy = torch.rand(N, 1)  # Or replicate your logic
 
-            # Combine node features
+            # Combine node features (8 total in this example)
             node_features = torch.cat([
-                normalized_positions,   # 2
+                normalized_positions,  # 2
                 p_rydberg,             # 1
                 mask_tensor,           # 1
                 boundary_dist,         # 1
                 angles,                # 1
                 local_interact,        # 1
                 config_entropy,        # 1
-            ], dim=1)  # total = 2+1+1+1+1+1+1=8 features (example; your real code may differ)
+            ], dim=1)
 
             # -------------------------------------------------------------
-            # 2) Build Edges
-            #    You do neighbor computations or cutoffs. We'll do a minimal placeholder
+            # 2) Build Edges (using distance threshold)
             # -------------------------------------------------------------
             distance_threshold = CONFIG['distance_threshold']
             nbrs = NearestNeighbors(radius=distance_threshold, algorithm='ball_tree').fit(positions)
@@ -188,22 +177,19 @@ class SpinSystemDataset(InMemoryDataset):
 
                 # Example edge features
                 E = edge_index.size(1)
-                edge_attr_list = []
                 pos_i = positions_t[edge_index[0]]
                 pos_j = positions_t[edge_index[1]]
                 vec_ij = pos_j - pos_i
                 dist_ij = torch.norm(vec_ij, dim=1, keepdim=True)
                 inv_r6 = 1.0 / (dist_ij**6 + 1e-8)
                 angle_ij = torch.atan2(vec_ij[:,1], vec_ij[:,0]).unsqueeze(1)
-
-                # Some quantum correlation placeholder
                 correlation = torch.rand(E, 1)
 
                 edge_attr = torch.cat([
-                    inv_r6,        # [E,1]
-                    angle_ij,      # [E,1]
-                    correlation,   # [E,1]
-                    dist_ij        # [E,1] or any other feature
+                    inv_r6,       # [E,1]
+                    angle_ij,     # [E,1]
+                    correlation,  # [E,1]
+                    dist_ij       # [E,1]
                 ], dim=1)
 
             # -------------------------------------------------------------
@@ -228,15 +214,13 @@ class SpinSystemDataset(InMemoryDataset):
             data.total_rydberg = total_ryd
             data.rydberg_density = total_ryd / N
 
-            # This might be your global config entropy or from row if you store it
+            # Example: config_entropy from row or placeholder
             data.config_entropy = torch.tensor([[row['Von_Neumann_Entropy']]], dtype=torch.float)
-            # or from some other column if relevant
 
             # -------------------------------------------------------------
             # 4) Add nA, nB
-            #    We have row['N_A'] or we can get from Subsystem_Mask
             # -------------------------------------------------------------
-            nA_val = float(mask_tensor.sum().item())  # sum of 1 bits
+            nA_val = float(mask_tensor.sum().item())
             nB_val = N - nA_val
             data.nA = torch.tensor([[nA_val]], dtype=torch.float)
             data.nB = torch.tensor([[nB_val]], dtype=torch.float)
@@ -252,11 +236,17 @@ class SpinSystemDataset(InMemoryDataset):
         self.data, self.slices = data_obj, slices
 
 def load_data():
-    """Reads the parquet, shuffles, builds SpinSystemDataset, saves to disk."""
-    if not os.path.exists(CONFIG['data_path']):
-        raise FileNotFoundError(f"Data file not found at {CONFIG['data_path']}")
+    """Reads two parquet files, combines them, shuffles, 
+       builds SpinSystemDataset, saves to disk."""
+    df_list = []
+    for path in CONFIG['data_paths']:
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"Data file not found at {path}")
+        df_temp = pq.read_table(path).to_pandas()
+        df_list.append(df_temp)
 
-    df = pq.read_table(CONFIG['data_path']).to_pandas()
+    # Merge both dataframes
+    df = pd.concat(df_list, ignore_index=True)
 
     # Shuffle
     df_shuffled = df.sample(frac=1, random_state=CONFIG['random_seed']).reset_index(drop=True)
