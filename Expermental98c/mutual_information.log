@@ -1,0 +1,1294 @@
+2025-01-23 03:10:50,217 - INFO - Starting parquet file processing
+2025-01-23 03:12:36,927 - INFO - Read parquet file with 1500000 rows in 106.70 seconds
+2025-01-23 03:12:38,219 - INFO - Progress: 1/1500000 rows (0.0%)
+                Average time per row: 0.0000 seconds
+                Estimated remaining time: 0.0 minutes
+            
+2025-01-23 03:12:39,509 - INFO - Progress: 101/1500000 rows (0.0%)
+                Average time per row: 0.0251 seconds
+                Estimated remaining time: 626.7 minutes
+            
+2025-01-23 03:12:40,259 - INFO - Progress: 201/1500000 rows (0.0%)
+                Average time per row: 0.0163 seconds
+                Estimated remaining time: 408.2 minutes
+            
+2025-01-23 03:12:41,097 - INFO - Progress: 301/1500000 rows (0.0%)
+                Average time per row: 0.0137 seconds
+                Estimated remaining time: 342.1 minutes
+            
+2025-01-23 03:12:41,851 - INFO - Progress: 401/1500000 rows (0.0%)
+                Average time per row: 0.0122 seconds
+                Estimated remaining time: 303.8 minutes
+            
+2025-01-23 03:12:42,815 - INFO - Progress: 501/1500000 rows (0.0%)
+                Average time per row: 0.0117 seconds
+                Estimated remaining time: 291.2 minutes
+            
+2025-01-23 03:12:43,681 - INFO - Progress: 601/1500000 rows (0.0%)
+                Average time per row: 0.0112 seconds
+                Estimated remaining time: 278.7 minutes
+            
+2025-01-23 03:12:44,432 - INFO - Progress: 701/1500000 rows (0.0%)
+                Average time per row: 0.0106 seconds
+                Estimated remaining time: 265.7 minutes
+            
+2025-01-23 03:12:45,171 - INFO - Progress: 801/1500000 rows (0.1%)
+                Average time per row: 0.0102 seconds
+                Estimated remaining time: 255.6 minutes
+            
+2025-01-23 03:12:46,196 - INFO - Progress: 901/1500000 rows (0.1%)
+                Average time per row: 0.0102 seconds
+                Estimated remaining time: 255.6 minutes
+            
+2025-01-23 03:12:47,223 - INFO - Progress: 1001/1500000 rows (0.1%)
+                Average time per row: 0.0102 seconds
+                Estimated remaining time: 255.7 minutes
+            
+2025-01-23 03:12:48,127 - INFO - Progress: 1101/1500000 rows (0.1%)
+                Average time per row: 0.0101 seconds
+                Estimated remaining time: 253.0 minutes
+            
+2025-01-23 03:12:48,930 - INFO - Progress: 1201/1500000 rows (0.1%)
+                Average time per row: 0.0100 seconds
+                Estimated remaining time: 248.6 minutes
+            
+2025-01-23 03:12:49,781 - INFO - Progress: 1301/1500000 rows (0.1%)
+                Average time per row: 0.0098 seconds
+                Estimated remaining time: 245.8 minutes
+            
+2025-01-23 03:12:50,657 - INFO - Progress: 1401/1500000 rows (0.1%)
+                Average time per row: 0.0098 seconds
+                Estimated remaining time: 243.9 minutes
+            
+2025-01-23 03:13:59,599 - INFO - Starting parquet file processing
+2025-01-23 03:15:37,020 - INFO - Read parquet file with 1500000 rows in 97.41 seconds
+2025-01-23 03:15:38,263 - INFO - Progress: 1/1500000 rows (0.0%)
+                Average time per row: 0.0000 seconds
+                Estimated remaining time: 0.0 minutes
+            
+2025-01-23 03:17:19,683 - INFO - Progress: 10001/1500000 rows (0.7%)
+                Average time per row: 0.0103 seconds
+                Estimated remaining time: 254.7 minutes
+            
+2025-01-23 03:19:01,737 - INFO - Progress: 20001/1500000 rows (1.3%)
+                Average time per row: 0.0102 seconds
+                Estimated remaining time: 252.3 minutes
+            
+2025-01-23 03:20:31,701 - INFO - Progress: 30001/1500000 rows (2.0%)
+                Average time per row: 0.0098 seconds
+                Estimated remaining time: 240.6 minutes
+            
+2025-01-23 03:21:55,268 - INFO - Progress: 40001/1500000 rows (2.7%)
+                Average time per row: 0.0095 seconds
+                Estimated remaining time: 230.0 minutes
+            
+2025-01-23 03:23:12,664 - INFO - Progress: 50001/1500000 rows (3.3%)
+                Average time per row: 0.0091 seconds
+                Estimated remaining time: 220.2 minutes
+            
+2025-01-23 03:24:26,699 - INFO - Progress: 60001/1500000 rows (4.0%)
+                Average time per row: 0.0088 seconds
+                Estimated remaining time: 211.8 minutes
+            
+2025-01-23 03:25:44,071 - INFO - Progress: 70001/1500000 rows (4.7%)
+                Average time per row: 0.0087 seconds
+                Estimated remaining time: 206.6 minutes
+            
+2025-01-23 03:27:00,220 - INFO - Progress: 80001/1500000 rows (5.3%)
+                Average time per row: 0.0085 seconds
+                Estimated remaining time: 202.1 minutes
+            
+2025-01-23 03:28:13,931 - INFO - Progress: 90001/1500000 rows (6.0%)
+                Average time per row: 0.0084 seconds
+                Estimated remaining time: 197.6 minutes
+            
+2025-01-23 03:29:31,760 - INFO - Progress: 100001/1500000 rows (6.7%)
+                Average time per row: 0.0083 seconds
+                Estimated remaining time: 194.7 minutes
+            
+2025-01-23 03:30:54,692 - INFO - Progress: 110001/1500000 rows (7.3%)
+                Average time per row: 0.0083 seconds
+                Estimated remaining time: 193.2 minutes
+            
+2025-01-23 03:32:22,454 - INFO - Progress: 120001/1500000 rows (8.0%)
+                Average time per row: 0.0084 seconds
+                Estimated remaining time: 192.7 minutes
+            
+2025-01-23 03:33:51,126 - INFO - Progress: 130001/1500000 rows (8.7%)
+                Average time per row: 0.0084 seconds
+                Estimated remaining time: 192.2 minutes
+            
+2025-01-23 03:35:11,852 - INFO - Progress: 140001/1500000 rows (9.3%)
+                Average time per row: 0.0084 seconds
+                Estimated remaining time: 190.2 minutes
+            
+2025-01-23 03:36:35,059 - INFO - Progress: 150001/1500000 rows (10.0%)
+                Average time per row: 0.0084 seconds
+                Estimated remaining time: 188.7 minutes
+            
+2025-01-23 03:37:56,112 - INFO - Progress: 160001/1500000 rows (10.7%)
+                Average time per row: 0.0084 seconds
+                Estimated remaining time: 186.9 minutes
+            
+2025-01-23 03:39:21,358 - INFO - Progress: 170001/1500000 rows (11.3%)
+                Average time per row: 0.0084 seconds
+                Estimated remaining time: 185.7 minutes
+            
+2025-01-23 03:40:14,090 - INFO - Progress: 180001/1500000 rows (12.0%)
+                Average time per row: 0.0082 seconds
+                Estimated remaining time: 180.5 minutes
+            
+2025-01-23 03:40:15,827 - INFO - Progress: 190001/1500000 rows (12.7%)
+                Average time per row: 0.0078 seconds
+                Estimated remaining time: 169.9 minutes
+            
+2025-01-23 03:40:34,238 - INFO - Progress: 200001/1500000 rows (13.3%)
+                Average time per row: 0.0075 seconds
+                Estimated remaining time: 162.2 minutes
+            
+2025-01-23 03:41:03,741 - INFO - Progress: 210001/1500000 rows (14.0%)
+                Average time per row: 0.0073 seconds
+                Estimated remaining time: 156.3 minutes
+            
+2025-01-23 03:41:08,289 - INFO - Progress: 220001/1500000 rows (14.7%)
+                Average time per row: 0.0070 seconds
+                Estimated remaining time: 148.5 minutes
+            
+2025-01-23 03:41:13,299 - INFO - Progress: 230001/1500000 rows (15.3%)
+                Average time per row: 0.0067 seconds
+                Estimated remaining time: 141.4 minutes
+            
+2025-01-23 03:41:23,099 - INFO - Progress: 240001/1500000 rows (16.0%)
+                Average time per row: 0.0064 seconds
+                Estimated remaining time: 135.3 minutes
+            
+2025-01-23 03:41:24,055 - INFO - Progress: 250001/1500000 rows (16.7%)
+                Average time per row: 0.0062 seconds
+                Estimated remaining time: 128.9 minutes
+            
+2025-01-23 03:41:33,603 - INFO - Progress: 260001/1500000 rows (17.3%)
+                Average time per row: 0.0060 seconds
+                Estimated remaining time: 123.7 minutes
+            
+2025-01-23 03:41:34,548 - INFO - Progress: 270001/1500000 rows (18.0%)
+                Average time per row: 0.0058 seconds
+                Estimated remaining time: 118.2 minutes
+            
+2025-01-23 03:41:39,522 - INFO - Progress: 280001/1500000 rows (18.7%)
+                Average time per row: 0.0056 seconds
+                Estimated remaining time: 113.5 minutes
+            
+2025-01-23 03:41:44,229 - INFO - Progress: 290001/1500000 rows (19.3%)
+                Average time per row: 0.0054 seconds
+                Estimated remaining time: 109.0 minutes
+            
+2025-01-23 03:41:48,897 - INFO - Progress: 300001/1500000 rows (20.0%)
+                Average time per row: 0.0052 seconds
+                Estimated remaining time: 104.8 minutes
+            
+2025-01-23 03:41:50,645 - INFO - Progress: 310001/1500000 rows (20.7%)
+                Average time per row: 0.0051 seconds
+                Estimated remaining time: 100.7 minutes
+            
+2025-01-23 03:41:55,503 - INFO - Progress: 320001/1500000 rows (21.3%)
+                Average time per row: 0.0049 seconds
+                Estimated remaining time: 97.0 minutes
+            
+2025-01-23 03:41:56,450 - INFO - Progress: 330001/1500000 rows (22.0%)
+                Average time per row: 0.0048 seconds
+                Estimated remaining time: 93.3 minutes
+            
+2025-01-23 03:41:57,392 - INFO - Progress: 340001/1500000 rows (22.7%)
+                Average time per row: 0.0046 seconds
+                Estimated remaining time: 89.9 minutes
+            
+2025-01-23 03:41:58,556 - INFO - Progress: 350001/1500000 rows (23.3%)
+                Average time per row: 0.0045 seconds
+                Estimated remaining time: 86.6 minutes
+            
+2025-01-23 03:42:03,750 - INFO - Progress: 360001/1500000 rows (24.0%)
+                Average time per row: 0.0044 seconds
+                Estimated remaining time: 83.7 minutes
+            
+2025-01-23 03:42:08,962 - INFO - Progress: 370001/1500000 rows (24.7%)
+                Average time per row: 0.0043 seconds
+                Estimated remaining time: 81.0 minutes
+            
+2025-01-23 03:42:10,124 - INFO - Progress: 380001/1500000 rows (25.3%)
+                Average time per row: 0.0042 seconds
+                Estimated remaining time: 78.3 minutes
+            
+2025-01-23 03:42:23,683 - INFO - Progress: 390001/1500000 rows (26.0%)
+                Average time per row: 0.0041 seconds
+                Estimated remaining time: 76.2 minutes
+            
+2025-01-23 03:42:25,028 - INFO - Progress: 400001/1500000 rows (26.7%)
+                Average time per row: 0.0040 seconds
+                Estimated remaining time: 73.7 minutes
+            
+2025-01-23 03:42:30,504 - INFO - Progress: 410001/1500000 rows (27.3%)
+                Average time per row: 0.0039 seconds
+                Estimated remaining time: 71.5 minutes
+            
+2025-01-23 03:42:31,566 - INFO - Progress: 420001/1500000 rows (28.0%)
+                Average time per row: 0.0038 seconds
+                Estimated remaining time: 69.2 minutes
+            
+2025-01-23 03:42:33,032 - INFO - Progress: 430001/1500000 rows (28.7%)
+                Average time per row: 0.0038 seconds
+                Estimated remaining time: 67.0 minutes
+            
+2025-01-23 03:42:34,456 - INFO - Progress: 440001/1500000 rows (29.3%)
+                Average time per row: 0.0037 seconds
+                Estimated remaining time: 64.9 minutes
+            
+2025-01-23 03:42:39,502 - INFO - Progress: 450001/1500000 rows (30.0%)
+                Average time per row: 0.0036 seconds
+                Estimated remaining time: 63.1 minutes
+            
+2025-01-23 03:42:40,930 - INFO - Progress: 460001/1500000 rows (30.7%)
+                Average time per row: 0.0035 seconds
+                Estimated remaining time: 61.2 minutes
+            
+2025-01-23 03:42:42,372 - INFO - Progress: 470001/1500000 rows (31.3%)
+                Average time per row: 0.0035 seconds
+                Estimated remaining time: 59.4 minutes
+            
+2025-01-23 03:42:47,760 - INFO - Progress: 480001/1500000 rows (32.0%)
+                Average time per row: 0.0034 seconds
+                Estimated remaining time: 57.8 minutes
+            
+2025-01-23 03:42:49,172 - INFO - Progress: 490001/1500000 rows (32.7%)
+                Average time per row: 0.0033 seconds
+                Estimated remaining time: 56.1 minutes
+            
+2025-01-23 03:42:50,584 - INFO - Progress: 500001/1500000 rows (33.3%)
+                Average time per row: 0.0033 seconds
+                Estimated remaining time: 54.4 minutes
+            
+2025-01-23 03:42:52,045 - INFO - Progress: 510001/1500000 rows (34.0%)
+                Average time per row: 0.0032 seconds
+                Estimated remaining time: 52.9 minutes
+            
+2025-01-23 03:42:57,441 - INFO - Progress: 520001/1500000 rows (34.7%)
+                Average time per row: 0.0032 seconds
+                Estimated remaining time: 51.5 minutes
+            
+2025-01-23 03:42:58,871 - INFO - Progress: 530001/1500000 rows (35.3%)
+                Average time per row: 0.0031 seconds
+                Estimated remaining time: 50.1 minutes
+            
+2025-01-23 03:43:03,627 - INFO - Progress: 540001/1500000 rows (36.0%)
+                Average time per row: 0.0030 seconds
+                Estimated remaining time: 48.8 minutes
+            
+2025-01-23 03:43:04,996 - INFO - Progress: 550001/1500000 rows (36.7%)
+                Average time per row: 0.0030 seconds
+                Estimated remaining time: 47.4 minutes
+            
+2025-01-23 03:43:05,738 - INFO - Progress: 560001/1500000 rows (37.3%)
+                Average time per row: 0.0029 seconds
+                Estimated remaining time: 46.1 minutes
+            
+2025-01-23 03:43:07,126 - INFO - Progress: 570001/1500000 rows (38.0%)
+                Average time per row: 0.0029 seconds
+                Estimated remaining time: 44.9 minutes
+            
+2025-01-23 03:43:07,859 - INFO - Progress: 580001/1500000 rows (38.7%)
+                Average time per row: 0.0028 seconds
+                Estimated remaining time: 43.6 minutes
+            
+2025-01-23 03:43:12,848 - INFO - Progress: 590001/1500000 rows (39.3%)
+                Average time per row: 0.0028 seconds
+                Estimated remaining time: 42.6 minutes
+            
+2025-01-23 03:43:13,629 - INFO - Progress: 600001/1500000 rows (40.0%)
+                Average time per row: 0.0028 seconds
+                Estimated remaining time: 41.4 minutes
+            
+2025-01-23 03:43:14,346 - INFO - Progress: 610001/1500000 rows (40.7%)
+                Average time per row: 0.0027 seconds
+                Estimated remaining time: 40.3 minutes
+            
+2025-01-23 03:43:15,398 - INFO - Progress: 620001/1500000 rows (41.3%)
+                Average time per row: 0.0027 seconds
+                Estimated remaining time: 39.2 minutes
+            
+2025-01-23 03:43:16,417 - INFO - Progress: 630001/1500000 rows (42.0%)
+                Average time per row: 0.0026 seconds
+                Estimated remaining time: 38.2 minutes
+            
+2025-01-23 03:43:17,771 - INFO - Progress: 640001/1500000 rows (42.7%)
+                Average time per row: 0.0026 seconds
+                Estimated remaining time: 37.2 minutes
+            
+2025-01-23 03:43:18,782 - INFO - Progress: 650001/1500000 rows (43.3%)
+                Average time per row: 0.0026 seconds
+                Estimated remaining time: 36.2 minutes
+            
+2025-01-23 03:43:19,542 - INFO - Progress: 660001/1500000 rows (44.0%)
+                Average time per row: 0.0025 seconds
+                Estimated remaining time: 35.3 minutes
+            
+2025-01-23 03:43:20,617 - INFO - Progress: 670001/1500000 rows (44.7%)
+                Average time per row: 0.0025 seconds
+                Estimated remaining time: 34.3 minutes
+            
+2025-01-23 03:43:22,054 - INFO - Progress: 680001/1500000 rows (45.3%)
+                Average time per row: 0.0024 seconds
+                Estimated remaining time: 33.5 minutes
+            
+2025-01-23 03:43:23,092 - INFO - Progress: 690001/1500000 rows (46.0%)
+                Average time per row: 0.0024 seconds
+                Estimated remaining time: 32.6 minutes
+            
+2025-01-23 03:43:24,181 - INFO - Progress: 700001/1500000 rows (46.7%)
+                Average time per row: 0.0024 seconds
+                Estimated remaining time: 31.8 minutes
+            
+2025-01-23 03:43:25,183 - INFO - Progress: 710001/1500000 rows (47.3%)
+                Average time per row: 0.0023 seconds
+                Estimated remaining time: 30.9 minutes
+            
+2025-01-23 03:43:25,900 - INFO - Progress: 720001/1500000 rows (48.0%)
+                Average time per row: 0.0023 seconds
+                Estimated remaining time: 30.1 minutes
+            
+2025-01-23 03:43:26,658 - INFO - Progress: 730001/1500000 rows (48.7%)
+                Average time per row: 0.0023 seconds
+                Estimated remaining time: 29.4 minutes
+            
+2025-01-23 03:43:27,402 - INFO - Progress: 740001/1500000 rows (49.3%)
+                Average time per row: 0.0023 seconds
+                Estimated remaining time: 28.6 minutes
+            
+2025-01-23 03:43:28,144 - INFO - Progress: 750001/1500000 rows (50.0%)
+                Average time per row: 0.0022 seconds
+                Estimated remaining time: 27.9 minutes
+            
+2025-01-23 03:43:28,877 - INFO - Progress: 760001/1500000 rows (50.7%)
+                Average time per row: 0.0022 seconds
+                Estimated remaining time: 27.1 minutes
+            
+2025-01-23 03:43:29,605 - INFO - Progress: 770001/1500000 rows (51.3%)
+                Average time per row: 0.0022 seconds
+                Estimated remaining time: 26.4 minutes
+            
+2025-01-23 03:43:30,329 - INFO - Progress: 780001/1500000 rows (52.0%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 25.7 minutes
+            
+2025-01-23 03:43:31,064 - INFO - Progress: 790001/1500000 rows (52.7%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 25.1 minutes
+            
+2025-01-23 03:43:31,821 - INFO - Progress: 800001/1500000 rows (53.3%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 24.4 minutes
+            
+2025-01-23 03:43:32,559 - INFO - Progress: 810001/1500000 rows (54.0%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 23.8 minutes
+            
+2025-01-23 03:43:33,309 - INFO - Progress: 820001/1500000 rows (54.7%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 23.2 minutes
+            
+2025-01-23 03:43:38,062 - INFO - Progress: 830001/1500000 rows (55.3%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 22.6 minutes
+            
+2025-01-23 03:44:21,351 - INFO - Progress: 840001/1500000 rows (56.0%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 22.6 minutes
+            
+2025-01-23 03:45:17,683 - INFO - Progress: 850001/1500000 rows (56.7%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 22.7 minutes
+            
+2025-01-23 03:45:24,916 - INFO - Progress: 860001/1500000 rows (57.3%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 22.2 minutes
+            
+2025-01-23 03:45:32,221 - INFO - Progress: 870001/1500000 rows (58.0%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 21.7 minutes
+            
+2025-01-23 03:45:39,789 - INFO - Progress: 880001/1500000 rows (58.7%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 21.2 minutes
+            
+2025-01-23 03:45:42,785 - INFO - Progress: 890001/1500000 rows (59.3%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 20.6 minutes
+            
+2025-01-23 03:45:52,968 - INFO - Progress: 900001/1500000 rows (60.0%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 20.2 minutes
+            
+2025-01-23 03:45:55,951 - INFO - Progress: 910001/1500000 rows (60.7%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 19.7 minutes
+            
+2025-01-23 03:46:02,792 - INFO - Progress: 920001/1500000 rows (61.3%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 19.2 minutes
+            
+2025-01-23 03:46:05,812 - INFO - Progress: 930001/1500000 rows (62.0%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 18.7 minutes
+            
+2025-01-23 03:46:13,120 - INFO - Progress: 940001/1500000 rows (62.7%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 18.2 minutes
+            
+2025-01-23 03:46:19,918 - INFO - Progress: 950001/1500000 rows (63.3%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 17.8 minutes
+            
+2025-01-23 03:46:26,855 - INFO - Progress: 960001/1500000 rows (64.0%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 17.3 minutes
+            
+2025-01-23 03:46:42,564 - INFO - Progress: 970001/1500000 rows (64.7%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 17.0 minutes
+            
+2025-01-23 03:47:08,687 - INFO - Progress: 980001/1500000 rows (65.3%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 16.7 minutes
+            
+2025-01-23 03:47:11,663 - INFO - Progress: 990001/1500000 rows (66.0%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 16.3 minutes
+            
+2025-01-23 03:47:18,259 - INFO - Progress: 1000001/1500000 rows (66.7%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 15.8 minutes
+            
+2025-01-23 03:47:21,458 - INFO - Progress: 1010001/1500000 rows (67.3%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 15.4 minutes
+            
+2025-01-23 03:47:24,404 - INFO - Progress: 1020001/1500000 rows (68.0%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 15.0 minutes
+            
+2025-01-23 03:47:27,426 - INFO - Progress: 1030001/1500000 rows (68.7%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 14.5 minutes
+            
+2025-01-23 03:47:30,444 - INFO - Progress: 1040001/1500000 rows (69.3%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 14.1 minutes
+            
+2025-01-23 03:47:33,516 - INFO - Progress: 1050001/1500000 rows (70.0%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 13.7 minutes
+            
+2025-01-23 03:47:36,661 - INFO - Progress: 1060001/1500000 rows (70.7%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 13.3 minutes
+            
+2025-01-23 03:47:39,831 - INFO - Progress: 1070001/1500000 rows (71.3%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 12.9 minutes
+            
+2025-01-23 03:47:51,291 - INFO - Progress: 1080001/1500000 rows (72.0%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 12.5 minutes
+            
+2025-01-23 03:47:59,137 - INFO - Progress: 1090001/1500000 rows (72.7%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 12.2 minutes
+            
+2025-01-23 03:48:07,187 - INFO - Progress: 1100001/1500000 rows (73.3%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 11.8 minutes
+            
+2025-01-23 03:48:15,023 - INFO - Progress: 1110001/1500000 rows (74.0%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 11.5 minutes
+            
+2025-01-23 03:48:23,289 - INFO - Progress: 1120001/1500000 rows (74.7%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 11.1 minutes
+            
+2025-01-23 03:48:31,342 - INFO - Progress: 1130001/1500000 rows (75.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 10.8 minutes
+            
+2025-01-23 03:48:39,424 - INFO - Progress: 1140001/1500000 rows (76.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 10.4 minutes
+            
+2025-01-23 03:48:47,584 - INFO - Progress: 1150001/1500000 rows (76.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 10.1 minutes
+            
+2025-01-23 03:48:55,615 - INFO - Progress: 1160001/1500000 rows (77.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 9.8 minutes
+            
+2025-01-23 03:49:03,621 - INFO - Progress: 1170001/1500000 rows (78.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 9.4 minutes
+            
+2025-01-23 03:49:11,876 - INFO - Progress: 1180001/1500000 rows (78.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 9.1 minutes
+            
+2025-01-23 03:49:19,856 - INFO - Progress: 1190001/1500000 rows (79.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 8.8 minutes
+            
+2025-01-23 03:49:27,947 - INFO - Progress: 1200001/1500000 rows (80.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 8.5 minutes
+            
+2025-01-23 03:49:35,851 - INFO - Progress: 1210001/1500000 rows (80.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 8.1 minutes
+            
+2025-01-23 03:49:43,747 - INFO - Progress: 1220001/1500000 rows (81.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 7.8 minutes
+            
+2025-01-23 03:49:51,751 - INFO - Progress: 1230001/1500000 rows (82.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 7.5 minutes
+            
+2025-01-23 03:49:59,755 - INFO - Progress: 1240001/1500000 rows (82.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 7.2 minutes
+            
+2025-01-23 03:50:07,610 - INFO - Progress: 1250001/1500000 rows (83.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 6.9 minutes
+            
+2025-01-23 03:50:15,433 - INFO - Progress: 1260001/1500000 rows (84.0%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 6.6 minutes
+            
+2025-01-23 03:50:23,725 - INFO - Progress: 1270001/1500000 rows (84.7%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 6.3 minutes
+            
+2025-01-23 03:50:31,635 - INFO - Progress: 1280001/1500000 rows (85.3%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 6.0 minutes
+            
+2025-01-23 03:50:48,653 - INFO - Progress: 1290001/1500000 rows (86.0%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 5.7 minutes
+            
+2025-01-23 03:51:14,969 - INFO - Progress: 1300001/1500000 rows (86.7%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 5.5 minutes
+            
+2025-01-23 03:51:41,124 - INFO - Progress: 1310001/1500000 rows (87.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 5.2 minutes
+            
+2025-01-23 03:52:07,879 - INFO - Progress: 1320001/1500000 rows (88.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 5.0 minutes
+            
+2025-01-23 03:52:33,841 - INFO - Progress: 1330001/1500000 rows (88.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 4.7 minutes
+            
+2025-01-23 03:52:59,636 - INFO - Progress: 1340001/1500000 rows (89.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 4.5 minutes
+            
+2025-01-23 03:53:23,973 - INFO - Progress: 1350001/1500000 rows (90.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 4.2 minutes
+            
+2025-01-23 03:53:47,799 - INFO - Progress: 1360001/1500000 rows (90.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 3.9 minutes
+            
+2025-01-23 03:54:14,059 - INFO - Progress: 1370001/1500000 rows (91.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 3.7 minutes
+            
+2025-01-23 03:54:39,537 - INFO - Progress: 1380001/1500000 rows (92.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 3.4 minutes
+            
+2025-01-23 03:55:05,961 - INFO - Progress: 1390001/1500000 rows (92.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 3.1 minutes
+            
+2025-01-23 03:55:33,353 - INFO - Progress: 1400001/1500000 rows (93.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 2.9 minutes
+            
+2025-01-23 03:55:59,485 - INFO - Progress: 1410001/1500000 rows (94.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 2.6 minutes
+            
+2025-01-23 03:56:24,526 - INFO - Progress: 1420001/1500000 rows (94.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 2.3 minutes
+            
+2025-01-23 03:56:50,890 - INFO - Progress: 1430001/1500000 rows (95.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 2.0 minutes
+            
+2025-01-23 03:57:16,469 - INFO - Progress: 1440001/1500000 rows (96.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 1.7 minutes
+            
+2025-01-23 03:57:41,960 - INFO - Progress: 1450001/1500000 rows (96.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 1.5 minutes
+            
+2025-01-23 03:58:07,610 - INFO - Progress: 1460001/1500000 rows (97.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 1.2 minutes
+            
+2025-01-23 03:58:32,750 - INFO - Progress: 1470001/1500000 rows (98.0%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 0.9 minutes
+            
+2025-01-23 03:58:58,549 - INFO - Progress: 1480001/1500000 rows (98.7%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 0.6 minutes
+            
+2025-01-23 03:59:23,791 - INFO - Progress: 1490001/1500000 rows (99.3%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 0.3 minutes
+            
+2025-01-23 03:59:50,064 - INFO - Mutual information calculation completed in 2652.94 seconds
+2025-01-23 04:07:37,035 - INFO - Starting parquet file processing
+2025-01-23 04:11:34,304 - INFO - Starting parquet file processing
+2025-01-23 04:11:56,030 - INFO - Starting parquet file processing
+2025-01-23 04:11:56,134 - INFO - Read parquet file with 5000 rows in 0.10 seconds
+2025-01-23 04:11:56,139 - INFO - Progress: 1/5000 rows (0.0%)
+                Average time per row: 0.0000 seconds
+                Estimated remaining time: 0.0 minutes
+            
+2025-01-23 04:12:04,188 - INFO - Mutual information calculation completed in 8.05 seconds
+2025-01-23 04:12:04,369 - INFO - Wrote output parquet file in 0.18 seconds
+2025-01-23 04:12:04,370 - INFO - 
+    Processing complete:
+        Total time: 8.34 seconds
+        Average time per row: 0.0017 seconds
+        Output file: Rydberg1.5M1-8_with_MI.parquet
+    
+2025-01-23 04:14:14,238 - INFO - Starting parquet file processing
+2025-01-23 04:16:09,147 - INFO - Read parquet file with 1500000 rows in 114.90 seconds
+2025-01-23 04:16:10,049 - INFO - Progress: 1/1500000 rows (0.0%)
+                Average time per row: 0.0000 seconds
+                Estimated remaining time: 0.0 minutes
+            
+2025-01-23 04:17:36,702 - INFO - Progress: 10001/1500000 rows (0.7%)
+                Average time per row: 0.0087 seconds
+                Estimated remaining time: 217.2 minutes
+            
+2025-01-23 04:18:57,661 - INFO - Progress: 20001/1500000 rows (1.3%)
+                Average time per row: 0.0084 seconds
+                Estimated remaining time: 207.7 minutes
+            
+2025-01-23 04:20:16,758 - INFO - Progress: 30001/1500000 rows (2.0%)
+                Average time per row: 0.0083 seconds
+                Estimated remaining time: 202.2 minutes
+            
+2025-01-23 04:21:36,187 - INFO - Progress: 40001/1500000 rows (2.7%)
+                Average time per row: 0.0082 seconds
+                Estimated remaining time: 198.9 minutes
+            
+2025-01-23 04:22:55,476 - INFO - Progress: 50001/1500000 rows (3.3%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 196.4 minutes
+            
+2025-01-23 04:24:15,749 - INFO - Progress: 60001/1500000 rows (4.0%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 194.6 minutes
+            
+2025-01-23 04:25:38,123 - INFO - Progress: 70001/1500000 rows (4.7%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 193.7 minutes
+            
+2025-01-23 04:26:57,865 - INFO - Progress: 80001/1500000 rows (5.3%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 191.9 minutes
+            
+2025-01-23 04:28:16,641 - INFO - Progress: 90001/1500000 rows (6.0%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 189.9 minutes
+            
+2025-01-23 04:29:36,822 - INFO - Progress: 100001/1500000 rows (6.7%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 188.4 minutes
+            
+2025-01-23 04:30:56,697 - INFO - Progress: 110001/1500000 rows (7.3%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 186.9 minutes
+            
+2025-01-23 04:32:20,735 - INFO - Progress: 120001/1500000 rows (8.0%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 186.2 minutes
+            
+2025-01-23 04:33:45,128 - INFO - Progress: 130001/1500000 rows (8.7%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 185.5 minutes
+            
+2025-01-23 04:35:06,197 - INFO - Progress: 140001/1500000 rows (9.3%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 184.1 minutes
+            
+2025-01-23 04:36:28,131 - INFO - Progress: 150001/1500000 rows (10.0%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 182.8 minutes
+            
+2025-01-23 04:37:52,796 - INFO - Progress: 160001/1500000 rows (10.7%)
+                Average time per row: 0.0081 seconds
+                Estimated remaining time: 182.0 minutes
+            
+2025-01-23 04:39:16,956 - INFO - Progress: 170001/1500000 rows (11.3%)
+                Average time per row: 0.0082 seconds
+                Estimated remaining time: 180.9 minutes
+            
+2025-01-23 04:40:09,686 - INFO - Progress: 180001/1500000 rows (12.0%)
+                Average time per row: 0.0080 seconds
+                Estimated remaining time: 176.1 minutes
+            
+2025-01-23 04:40:11,495 - INFO - Progress: 190001/1500000 rows (12.7%)
+                Average time per row: 0.0076 seconds
+                Estimated remaining time: 165.7 minutes
+            
+2025-01-23 04:40:28,328 - INFO - Progress: 200001/1500000 rows (13.3%)
+                Average time per row: 0.0073 seconds
+                Estimated remaining time: 158.1 minutes
+            
+2025-01-23 04:40:57,801 - INFO - Progress: 210001/1500000 rows (14.0%)
+                Average time per row: 0.0071 seconds
+                Estimated remaining time: 152.4 minutes
+            
+2025-01-23 04:41:02,258 - INFO - Progress: 220001/1500000 rows (14.7%)
+                Average time per row: 0.0068 seconds
+                Estimated remaining time: 144.8 minutes
+            
+2025-01-23 04:41:07,106 - INFO - Progress: 230001/1500000 rows (15.3%)
+                Average time per row: 0.0065 seconds
+                Estimated remaining time: 137.8 minutes
+            
+2025-01-23 04:41:16,286 - INFO - Progress: 240001/1500000 rows (16.0%)
+                Average time per row: 0.0063 seconds
+                Estimated remaining time: 131.9 minutes
+            
+2025-01-23 04:41:17,194 - INFO - Progress: 250001/1500000 rows (16.7%)
+                Average time per row: 0.0060 seconds
+                Estimated remaining time: 125.7 minutes
+            
+2025-01-23 04:41:26,512 - INFO - Progress: 260001/1500000 rows (17.3%)
+                Average time per row: 0.0058 seconds
+                Estimated remaining time: 120.6 minutes
+            
+2025-01-23 04:41:27,460 - INFO - Progress: 270001/1500000 rows (18.0%)
+                Average time per row: 0.0056 seconds
+                Estimated remaining time: 115.3 minutes
+            
+2025-01-23 04:41:32,324 - INFO - Progress: 280001/1500000 rows (18.7%)
+                Average time per row: 0.0054 seconds
+                Estimated remaining time: 110.6 minutes
+            
+2025-01-23 04:41:36,809 - INFO - Progress: 290001/1500000 rows (19.3%)
+                Average time per row: 0.0053 seconds
+                Estimated remaining time: 106.2 minutes
+            
+2025-01-23 04:41:41,352 - INFO - Progress: 300001/1500000 rows (20.0%)
+                Average time per row: 0.0051 seconds
+                Estimated remaining time: 102.1 minutes
+            
+2025-01-23 04:41:43,172 - INFO - Progress: 310001/1500000 rows (20.7%)
+                Average time per row: 0.0049 seconds
+                Estimated remaining time: 98.1 minutes
+            
+2025-01-23 04:41:47,979 - INFO - Progress: 320001/1500000 rows (21.3%)
+                Average time per row: 0.0048 seconds
+                Estimated remaining time: 94.6 minutes
+            
+2025-01-23 04:41:48,859 - INFO - Progress: 330001/1500000 rows (22.0%)
+                Average time per row: 0.0047 seconds
+                Estimated remaining time: 91.0 minutes
+            
+2025-01-23 04:41:49,852 - INFO - Progress: 340001/1500000 rows (22.7%)
+                Average time per row: 0.0045 seconds
+                Estimated remaining time: 87.6 minutes
+            
+2025-01-23 04:41:50,838 - INFO - Progress: 350001/1500000 rows (23.3%)
+                Average time per row: 0.0044 seconds
+                Estimated remaining time: 84.4 minutes
+            
+2025-01-23 04:41:56,093 - INFO - Progress: 360001/1500000 rows (24.0%)
+                Average time per row: 0.0043 seconds
+                Estimated remaining time: 81.6 minutes
+            
+2025-01-23 04:42:01,309 - INFO - Progress: 370001/1500000 rows (24.7%)
+                Average time per row: 0.0042 seconds
+                Estimated remaining time: 79.0 minutes
+            
+2025-01-23 04:42:02,501 - INFO - Progress: 380001/1500000 rows (25.3%)
+                Average time per row: 0.0041 seconds
+                Estimated remaining time: 76.3 minutes
+            
+2025-01-23 04:42:15,784 - INFO - Progress: 390001/1500000 rows (26.0%)
+                Average time per row: 0.0040 seconds
+                Estimated remaining time: 74.3 minutes
+            
+2025-01-23 04:42:17,231 - INFO - Progress: 400001/1500000 rows (26.7%)
+                Average time per row: 0.0039 seconds
+                Estimated remaining time: 71.9 minutes
+            
+2025-01-23 04:42:22,419 - INFO - Progress: 410001/1500000 rows (27.3%)
+                Average time per row: 0.0038 seconds
+                Estimated remaining time: 69.7 minutes
+            
+2025-01-23 04:42:23,430 - INFO - Progress: 420001/1500000 rows (28.0%)
+                Average time per row: 0.0037 seconds
+                Estimated remaining time: 67.5 minutes
+            
+2025-01-23 04:42:24,845 - INFO - Progress: 430001/1500000 rows (28.7%)
+                Average time per row: 0.0037 seconds
+                Estimated remaining time: 65.3 minutes
+            
+2025-01-23 04:42:26,244 - INFO - Progress: 440001/1500000 rows (29.3%)
+                Average time per row: 0.0036 seconds
+                Estimated remaining time: 63.3 minutes
+            
+2025-01-23 04:42:31,143 - INFO - Progress: 450001/1500000 rows (30.0%)
+                Average time per row: 0.0035 seconds
+                Estimated remaining time: 61.5 minutes
+            
+2025-01-23 04:42:32,574 - INFO - Progress: 460001/1500000 rows (30.7%)
+                Average time per row: 0.0034 seconds
+                Estimated remaining time: 59.7 minutes
+            
+2025-01-23 04:42:34,038 - INFO - Progress: 470001/1500000 rows (31.3%)
+                Average time per row: 0.0034 seconds
+                Estimated remaining time: 57.9 minutes
+            
+2025-01-23 04:42:39,357 - INFO - Progress: 480001/1500000 rows (32.0%)
+                Average time per row: 0.0033 seconds
+                Estimated remaining time: 56.3 minutes
+            
+2025-01-23 04:42:40,760 - INFO - Progress: 490001/1500000 rows (32.7%)
+                Average time per row: 0.0032 seconds
+                Estimated remaining time: 54.7 minutes
+            
+2025-01-23 04:42:42,259 - INFO - Progress: 500001/1500000 rows (33.3%)
+                Average time per row: 0.0032 seconds
+                Estimated remaining time: 53.1 minutes
+            
+2025-01-23 04:42:43,689 - INFO - Progress: 510001/1500000 rows (34.0%)
+                Average time per row: 0.0031 seconds
+                Estimated remaining time: 51.6 minutes
+            
+2025-01-23 04:42:48,832 - INFO - Progress: 520001/1500000 rows (34.7%)
+                Average time per row: 0.0031 seconds
+                Estimated remaining time: 50.2 minutes
+            
+2025-01-23 04:42:50,264 - INFO - Progress: 530001/1500000 rows (35.3%)
+                Average time per row: 0.0030 seconds
+                Estimated remaining time: 48.8 minutes
+            
+2025-01-23 04:42:55,124 - INFO - Progress: 540001/1500000 rows (36.0%)
+                Average time per row: 0.0030 seconds
+                Estimated remaining time: 47.6 minutes
+            
+2025-01-23 04:42:56,554 - INFO - Progress: 550001/1500000 rows (36.7%)
+                Average time per row: 0.0029 seconds
+                Estimated remaining time: 46.3 minutes
+            
+2025-01-23 04:42:57,329 - INFO - Progress: 560001/1500000 rows (37.3%)
+                Average time per row: 0.0029 seconds
+                Estimated remaining time: 45.0 minutes
+            
+2025-01-23 04:42:58,739 - INFO - Progress: 570001/1500000 rows (38.0%)
+                Average time per row: 0.0028 seconds
+                Estimated remaining time: 43.8 minutes
+            
+2025-01-23 04:42:59,491 - INFO - Progress: 580001/1500000 rows (38.7%)
+                Average time per row: 0.0028 seconds
+                Estimated remaining time: 42.6 minutes
+            
+2025-01-23 04:43:04,699 - INFO - Progress: 590001/1500000 rows (39.3%)
+                Average time per row: 0.0027 seconds
+                Estimated remaining time: 41.5 minutes
+            
+2025-01-23 04:43:05,477 - INFO - Progress: 600001/1500000 rows (40.0%)
+                Average time per row: 0.0027 seconds
+                Estimated remaining time: 40.4 minutes
+            
+2025-01-23 04:43:06,190 - INFO - Progress: 610001/1500000 rows (40.7%)
+                Average time per row: 0.0027 seconds
+                Estimated remaining time: 39.3 minutes
+            
+2025-01-23 04:43:07,254 - INFO - Progress: 620001/1500000 rows (41.3%)
+                Average time per row: 0.0026 seconds
+                Estimated remaining time: 38.3 minutes
+            
+2025-01-23 04:43:08,253 - INFO - Progress: 630001/1500000 rows (42.0%)
+                Average time per row: 0.0026 seconds
+                Estimated remaining time: 37.3 minutes
+            
+2025-01-23 04:43:09,380 - INFO - Progress: 640001/1500000 rows (42.7%)
+                Average time per row: 0.0025 seconds
+                Estimated remaining time: 36.3 minutes
+            
+2025-01-23 04:43:10,419 - INFO - Progress: 650001/1500000 rows (43.3%)
+                Average time per row: 0.0025 seconds
+                Estimated remaining time: 35.3 minutes
+            
+2025-01-23 04:43:11,145 - INFO - Progress: 660001/1500000 rows (44.0%)
+                Average time per row: 0.0025 seconds
+                Estimated remaining time: 34.4 minutes
+            
+2025-01-23 04:43:12,249 - INFO - Progress: 670001/1500000 rows (44.7%)
+                Average time per row: 0.0024 seconds
+                Estimated remaining time: 33.5 minutes
+            
+2025-01-23 04:43:13,654 - INFO - Progress: 680001/1500000 rows (45.3%)
+                Average time per row: 0.0024 seconds
+                Estimated remaining time: 32.6 minutes
+            
+2025-01-23 04:43:14,674 - INFO - Progress: 690001/1500000 rows (46.0%)
+                Average time per row: 0.0024 seconds
+                Estimated remaining time: 31.8 minutes
+            
+2025-01-23 04:43:15,766 - INFO - Progress: 700001/1500000 rows (46.7%)
+                Average time per row: 0.0023 seconds
+                Estimated remaining time: 31.0 minutes
+            
+2025-01-23 04:43:16,788 - INFO - Progress: 710001/1500000 rows (47.3%)
+                Average time per row: 0.0023 seconds
+                Estimated remaining time: 30.2 minutes
+            
+2025-01-23 04:43:17,512 - INFO - Progress: 720001/1500000 rows (48.0%)
+                Average time per row: 0.0023 seconds
+                Estimated remaining time: 29.4 minutes
+            
+2025-01-23 04:43:18,258 - INFO - Progress: 730001/1500000 rows (48.7%)
+                Average time per row: 0.0022 seconds
+                Estimated remaining time: 28.6 minutes
+            
+2025-01-23 04:43:18,988 - INFO - Progress: 740001/1500000 rows (49.3%)
+                Average time per row: 0.0022 seconds
+                Estimated remaining time: 27.9 minutes
+            
+2025-01-23 04:43:19,721 - INFO - Progress: 750001/1500000 rows (50.0%)
+                Average time per row: 0.0022 seconds
+                Estimated remaining time: 27.2 minutes
+            
+2025-01-23 04:43:20,446 - INFO - Progress: 760001/1500000 rows (50.7%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 26.5 minutes
+            
+2025-01-23 04:43:21,191 - INFO - Progress: 770001/1500000 rows (51.3%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 25.8 minutes
+            
+2025-01-23 04:43:21,934 - INFO - Progress: 780001/1500000 rows (52.0%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 25.1 minutes
+            
+2025-01-23 04:43:22,676 - INFO - Progress: 790001/1500000 rows (52.7%)
+                Average time per row: 0.0021 seconds
+                Estimated remaining time: 24.5 minutes
+            
+2025-01-23 04:43:23,416 - INFO - Progress: 800001/1500000 rows (53.3%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 23.8 minutes
+            
+2025-01-23 04:43:24,149 - INFO - Progress: 810001/1500000 rows (54.0%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 23.2 minutes
+            
+2025-01-23 04:43:24,884 - INFO - Progress: 820001/1500000 rows (54.7%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 22.6 minutes
+            
+2025-01-23 04:43:29,560 - INFO - Progress: 830001/1500000 rows (55.3%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 22.1 minutes
+            
+2025-01-23 04:44:13,434 - INFO - Progress: 840001/1500000 rows (56.0%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 22.1 minutes
+            
+2025-01-23 04:45:09,802 - INFO - Progress: 850001/1500000 rows (56.7%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 22.2 minutes
+            
+2025-01-23 04:45:17,040 - INFO - Progress: 860001/1500000 rows (57.3%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 21.7 minutes
+            
+2025-01-23 04:45:24,356 - INFO - Progress: 870001/1500000 rows (58.0%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 21.2 minutes
+            
+2025-01-23 04:45:31,935 - INFO - Progress: 880001/1500000 rows (58.7%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 20.7 minutes
+            
+2025-01-23 04:45:34,966 - INFO - Progress: 890001/1500000 rows (59.3%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 20.2 minutes
+            
+2025-01-23 04:45:45,516 - INFO - Progress: 900001/1500000 rows (60.0%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 19.7 minutes
+            
+2025-01-23 04:45:48,583 - INFO - Progress: 910001/1500000 rows (60.7%)
+                Average time per row: 0.0020 seconds
+                Estimated remaining time: 19.2 minutes
+            
+2025-01-23 04:45:55,374 - INFO - Progress: 920001/1500000 rows (61.3%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 18.8 minutes
+            
+2025-01-23 04:45:58,374 - INFO - Progress: 930001/1500000 rows (62.0%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 18.3 minutes
+            
+2025-01-23 04:46:05,628 - INFO - Progress: 940001/1500000 rows (62.7%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 17.8 minutes
+            
+2025-01-23 04:46:12,483 - INFO - Progress: 950001/1500000 rows (63.3%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 17.4 minutes
+            
+2025-01-23 04:46:19,326 - INFO - Progress: 960001/1500000 rows (64.0%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 17.0 minutes
+            
+2025-01-23 04:46:34,916 - INFO - Progress: 970001/1500000 rows (64.7%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 16.6 minutes
+            
+2025-01-23 04:47:01,214 - INFO - Progress: 980001/1500000 rows (65.3%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 16.4 minutes
+            
+2025-01-23 04:47:04,212 - INFO - Progress: 990001/1500000 rows (66.0%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 15.9 minutes
+            
+2025-01-23 04:47:10,792 - INFO - Progress: 1000001/1500000 rows (66.7%)
+                Average time per row: 0.0019 seconds
+                Estimated remaining time: 15.5 minutes
+            
+2025-01-23 04:47:13,706 - INFO - Progress: 1010001/1500000 rows (67.3%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 15.1 minutes
+            
+2025-01-23 04:47:16,649 - INFO - Progress: 1020001/1500000 rows (68.0%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 14.6 minutes
+            
+2025-01-23 04:47:19,591 - INFO - Progress: 1030001/1500000 rows (68.7%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 14.2 minutes
+            
+2025-01-23 04:47:22,509 - INFO - Progress: 1040001/1500000 rows (69.3%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 13.8 minutes
+            
+2025-01-23 04:47:25,447 - INFO - Progress: 1050001/1500000 rows (70.0%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 13.4 minutes
+            
+2025-01-23 04:47:28,378 - INFO - Progress: 1060001/1500000 rows (70.7%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 13.0 minutes
+            
+2025-01-23 04:47:31,309 - INFO - Progress: 1070001/1500000 rows (71.3%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 12.6 minutes
+            
+2025-01-23 04:47:42,827 - INFO - Progress: 1080001/1500000 rows (72.0%)
+                Average time per row: 0.0018 seconds
+                Estimated remaining time: 12.3 minutes
+            
+2025-01-23 04:47:50,679 - INFO - Progress: 1090001/1500000 rows (72.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 11.9 minutes
+            
+2025-01-23 04:47:59,017 - INFO - Progress: 1100001/1500000 rows (73.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 11.6 minutes
+            
+2025-01-23 04:48:06,957 - INFO - Progress: 1110001/1500000 rows (74.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 11.2 minutes
+            
+2025-01-23 04:48:14,438 - INFO - Progress: 1120001/1500000 rows (74.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 10.9 minutes
+            
+2025-01-23 04:48:21,831 - INFO - Progress: 1130001/1500000 rows (75.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 10.5 minutes
+            
+2025-01-23 04:48:29,515 - INFO - Progress: 1140001/1500000 rows (76.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 10.2 minutes
+            
+2025-01-23 04:48:37,364 - INFO - Progress: 1150001/1500000 rows (76.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 9.9 minutes
+            
+2025-01-23 04:48:45,116 - INFO - Progress: 1160001/1500000 rows (77.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 9.6 minutes
+            
+2025-01-23 04:48:52,754 - INFO - Progress: 1170001/1500000 rows (78.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 9.2 minutes
+            
+2025-01-23 04:49:00,432 - INFO - Progress: 1180001/1500000 rows (78.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 8.9 minutes
+            
+2025-01-23 04:49:07,934 - INFO - Progress: 1190001/1500000 rows (79.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 8.6 minutes
+            
+2025-01-23 04:49:15,433 - INFO - Progress: 1200001/1500000 rows (80.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 8.3 minutes
+            
+2025-01-23 04:49:23,027 - INFO - Progress: 1210001/1500000 rows (80.7%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 8.0 minutes
+            
+2025-01-23 04:49:30,441 - INFO - Progress: 1220001/1500000 rows (81.3%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 7.7 minutes
+            
+2025-01-23 04:49:37,808 - INFO - Progress: 1230001/1500000 rows (82.0%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 7.3 minutes
+            
+2025-01-23 04:49:45,402 - INFO - Progress: 1240001/1500000 rows (82.7%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 7.0 minutes
+            
+2025-01-23 04:49:52,975 - INFO - Progress: 1250001/1500000 rows (83.3%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 6.7 minutes
+            
+2025-01-23 04:50:00,686 - INFO - Progress: 1260001/1500000 rows (84.0%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 6.4 minutes
+            
+2025-01-23 04:50:08,432 - INFO - Progress: 1270001/1500000 rows (84.7%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 6.2 minutes
+            
+2025-01-23 04:50:15,856 - INFO - Progress: 1280001/1500000 rows (85.3%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 5.9 minutes
+            
+2025-01-23 04:50:32,432 - INFO - Progress: 1290001/1500000 rows (86.0%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 5.6 minutes
+            
+2025-01-23 04:50:57,060 - INFO - Progress: 1300001/1500000 rows (86.7%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 5.4 minutes
+            
+2025-01-23 04:51:22,636 - INFO - Progress: 1310001/1500000 rows (87.3%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 5.1 minutes
+            
+2025-01-23 04:51:48,427 - INFO - Progress: 1320001/1500000 rows (88.0%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 4.9 minutes
+            
+2025-01-23 04:52:14,108 - INFO - Progress: 1330001/1500000 rows (88.7%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 4.6 minutes
+            
+2025-01-23 04:52:39,046 - INFO - Progress: 1340001/1500000 rows (89.3%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 4.4 minutes
+            
+2025-01-23 04:53:04,094 - INFO - Progress: 1350001/1500000 rows (90.0%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 4.1 minutes
+            
+2025-01-23 04:53:29,923 - INFO - Progress: 1360001/1500000 rows (90.7%)
+                Average time per row: 0.0016 seconds
+                Estimated remaining time: 3.8 minutes
+            
+2025-01-23 04:53:54,852 - INFO - Progress: 1370001/1500000 rows (91.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 3.6 minutes
+            
+2025-01-23 04:54:18,571 - INFO - Progress: 1380001/1500000 rows (92.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 3.3 minutes
+            
+2025-01-23 04:54:42,612 - INFO - Progress: 1390001/1500000 rows (92.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 3.1 minutes
+            
+2025-01-23 04:55:06,313 - INFO - Progress: 1400001/1500000 rows (93.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 2.8 minutes
+            
+2025-01-23 04:55:30,069 - INFO - Progress: 1410001/1500000 rows (94.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 2.5 minutes
+            
+2025-01-23 04:55:53,410 - INFO - Progress: 1420001/1500000 rows (94.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 2.2 minutes
+            
+2025-01-23 04:56:17,366 - INFO - Progress: 1430001/1500000 rows (95.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 2.0 minutes
+            
+2025-01-23 04:56:40,617 - INFO - Progress: 1440001/1500000 rows (96.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 1.7 minutes
+            
+2025-01-23 04:57:04,277 - INFO - Progress: 1450001/1500000 rows (96.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 1.4 minutes
+            
+2025-01-23 04:57:28,309 - INFO - Progress: 1460001/1500000 rows (97.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 1.1 minutes
+            
+2025-01-23 04:57:51,887 - INFO - Progress: 1470001/1500000 rows (98.0%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 0.9 minutes
+            
+2025-01-23 04:58:15,006 - INFO - Progress: 1480001/1500000 rows (98.7%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 0.6 minutes
+            
+2025-01-23 04:58:39,361 - INFO - Progress: 1490001/1500000 rows (99.3%)
+                Average time per row: 0.0017 seconds
+                Estimated remaining time: 0.3 minutes
+            
+2025-01-23 04:59:06,331 - INFO - Mutual information calculation completed in 2577.11 seconds
+2025-01-23 05:02:05,101 - INFO - Wrote output parquet file in 178.76 seconds
+2025-01-23 05:02:05,170 - INFO - 
+    Processing complete:
+        Total time: 2870.93 seconds
+        Average time per row: 0.0019 seconds
+        Output file: Rydberg1.5M1-8_with_MI.parquet
+    
+2025-01-23 05:05:51,291 - INFO - Starting entropy comparison analysis
+2025-01-23 05:05:51,292 - INFO - Reading input parquet file...
+2025-01-23 05:06:37,510 - ERROR - Error during processing: malloc of size 8589934592 failed

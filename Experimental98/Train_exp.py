@@ -37,7 +37,8 @@ CONFIG = {
     'scheduler_factor': 0.5,
     'scheduler_patience': 10,
     'grad_clip': 1.0,
-    'curriculum_alpha': 0.5
+    'curriculum_alpha': 0.5,
+    'num_layers': 10
 }
 
 # -----------------------------------------------------------
