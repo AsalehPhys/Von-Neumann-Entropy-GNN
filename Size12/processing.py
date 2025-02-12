@@ -22,7 +22,7 @@ from itertools import combinations
 # Modified Configuration
 CONFIG = {
     'data_paths': [
-        'Rydberg200k6.parquet',
+        'Rydbergsize2.parquet',
     ],
     'processed_dir': './processed_experimental12',
     'processed_file_name': 'data.pt',
