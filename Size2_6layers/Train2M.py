@@ -33,8 +33,8 @@ from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts
 CONFIG = {
     'processed_dir': './processed_experimentalrung1',
     'processed_file_name': 'data.pt',
-    'batch_size': 512,
-    'learning_rate': 1e-4,
+    'batch_size': 32,
+    'learning_rate': 3e-4,
     'weight_decay': 1e-4,
     'hidden_channels': 512,
     'num_epochs': 500,
@@ -112,7 +112,7 @@ class PhysicalScaleAwareLoss(nn.Module):
       2) A small MSE or log-cosh term for stability.
       3) Physics-based bounds as soft constraints.
     """
-    def __init__(self, physics_weight=1.0, rel_weight=0.5, eps=1e-10):
+    def __init__(self, physics_weight=1.0, rel_weight=0.0, eps=1e-10):
         super().__init__()
         self.physics_weight = physics_weight
         self.rel_weight = rel_weight
@@ -431,7 +431,7 @@ def main(rank, world_size):
         return
 
     # Train/Val split
-    train_size = int(0.3 * len(dataset))
+    train_size = int(0.2 * len(dataset))
     val_size = len(dataset) - train_size
     train_dataset, val_dataset = random_split(
         dataset,
@@ -457,7 +457,7 @@ def main(rank, world_size):
 
     model = DDP(model, device_ids=[rank])
 
-    criterion = PhysicalScaleAwareLoss(physics_weight=2.0)
+    criterion = PhysicalScaleAwareLoss(physics_weight=0.5)
     optimizer = torch.optim.AdamW(
         model.parameters(),
         lr=CONFIG['learning_rate'],
