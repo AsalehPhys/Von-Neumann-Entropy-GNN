@@ -452,8 +452,8 @@ def objective(trial):
     learning_rate = trial.suggest_float("learning_rate", 1e-4, 1e-3, log=True)
     weight_decay = trial.suggest_float("weight_decay", 1e-6, 1e-3, log=True)
     hidden_channels = trial.suggest_categorical("hidden_channels", [256, 512, 1024])
-    dropout_p = trial.suggest_float("dropout_p", 0.1, 0.5, step=0.1)
-    num_layers = trial.suggest_categorical("num_layers", [4, 6, 8])
+    dropout_p = trial.suggest_float("dropout_p", 0.3, 0.6, step=0.1)
+    num_layers = trial.suggest_categorical("num_layers", [4, 6, 8, 10, 12])
     T_0 = trial.suggest_int("T_0", 10, 50, step=10)
     T_mult = trial.suggest_int("T_mult", 1, 3)
 
