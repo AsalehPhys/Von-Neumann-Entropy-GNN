@@ -230,7 +230,7 @@ class ExperimentalGNN(nn.Module):
             # Node features BN after convolution
             self.norms.append(BatchNorm(hidden_channels))
 
-        # Edge-Preserving Pooling
+        # intermediat transformation
         self.pool = nn.ModuleList([
             nn.Sequential(
                 nn.Linear(hidden_channels, hidden_channels),
